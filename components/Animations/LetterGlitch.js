@@ -6,6 +6,8 @@ const LetterGlitch = ({
   centerVignette = true,
   outerVignette = true,
   smooth = true,
+  children,
+  className
 }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -236,7 +238,8 @@ const LetterGlitch = ({
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
+      {children}
       <canvas ref={canvasRef} style={canvasStyle} />
       {outerVignette && <div style={outerVignetteStyle}></div>}
       {centerVignette && <div style={centerVignetteStyle}></div>}

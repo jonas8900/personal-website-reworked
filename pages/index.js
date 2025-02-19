@@ -7,31 +7,40 @@ import ButtonFilled from '@/components/Buttons/buttonFilled';
 import ButtonOutlined from '@/components/Buttons/buttonOutlined';
 import Navigation from '@/components/Navigation/navigation';
 import Termi from '@/components/Terminal/Termi';
+import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import styled from 'styled-components';
 
 export default function Home({isMobile, isDesktop, isTV}) {
   const [isTermiActive, setIsTermiActive] = useState(false);
-  const [isGlitchActive, setIsGlitchActive] = useState(false);
   const projectSectionRef = useRef(null);
+  const homeSectionRef = useRef(null);
 
-
+  useEffect(() => {
+    if (isTermiActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isTermiActive]);
 
   return (
-    <>
-    <StyledDiv>
+    <StyledContentWrapper $istermiactive={isTermiActive}  ref={homeSectionRef}>
+      {isTermiActive && (
+        <StyledTermiWrapper>
+            <Termi setIsTermiActive={setIsTermiActive} isMobile={isMobile} isDesktop={isDesktop} isTV={isTV}/>
+        </StyledTermiWrapper>
+      )}
+    <StyledDiv $istermiactive={isTermiActive}> 
       <Navigation 
          isMobile={isMobile} 
          isDesktop={isDesktop} 
          isTV={isTV}
          projectSectionRef={projectSectionRef}
+          homeSectionRef={homeSectionRef}
       />
-      {isTermiActive && (
-        <StyledTermiWrapper>
-            <Termi setIsTermiActive={setIsTermiActive}/>
-        </StyledTermiWrapper>
-      )}
+
       <HeaderContentWrapper>
         <Header>
           <h1>Jonas Dally</h1>
@@ -75,35 +84,33 @@ export default function Home({isMobile, isDesktop, isTV}) {
             Mehr
           </StyledOutlinedButton>
         </Header>
-        <ActivateTermi 
-          onMouseEnter={() => setIsGlitchActive(true)} 
-          onMouseLeave={() => setIsGlitchActive(false)}  
-          onClick={() => setIsTermiActive(!isTermiActive)}
-          >
-            {isGlitchActive ? (
-              <>
-                <LetterGlitch glitchSpeed={20}/>  
-                <p>Aktiviere Terminal</p>
-              </>
-            ) : (
-                <StyledButton>
-                  Aktiviere Terminal
-                </StyledButton>
-            )}
-
-        </ActivateTermi>
+        <StyledLetterGlitch glitchSpeed={20}>
+          <StyledButton onClick={() => setIsTermiActive(true)}>
+            Aktiviere Terminal
+          </StyledButton>
+        </StyledLetterGlitch>  
       </HeaderContentWrapper>
       </StyledDiv>
       <ProjectContent ref={projectSectionRef}>
-        <h2>Projekte</h2>
+        <div>
+          <h2>Projekte</h2>
+          <Image src="/images/placeholder.jpg" alt="placeholder" width={500} height={500} />
+        </div>
+        
       </ProjectContent>
       <StarsCanvas />
-     </>
+     </StyledContentWrapper>
 
   );
 }
 
+const StyledContentWrapper = styled.div`
+  max-height: ${({ $istermiactive }) => ($istermiactive ? '100vh' : 'auto')};
+  overflow: hidden;
+  `;
+
 const StyledDiv = styled.div`
+    filter: ${({ $istermiactive }) => ($istermiactive ? 'blur(5px)' : 'none')};
     width: 100%;
     height: 100vh;
     min-height: 100vh;
@@ -113,14 +120,21 @@ const StyledDiv = styled.div`
 
 const StyledTermiWrapper = styled.div`
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      width: 50%;
+      top: 50%;
+    }
 `;
 
 //Landing Page
 const HeaderContentWrapper = styled.div`
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -192,6 +206,7 @@ const Header = styled.div`
 `;
 
 
+
 const StyledSecondAnimatedHeadline = styled(TypeAnimation)`
   color: #12D700 !important;
   font-family: "Press Start 2P" !important;
@@ -213,43 +228,23 @@ const StyledSecondAnimatedHeadline = styled(TypeAnimation)`
 const ProjectContent = styled.div`
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 
   h2 {
     color: #12D700;
     font-size: 3rem;
+
   }
 `;
 
-const ActivateTermi = styled.span`
-
-    width: 30%;
-    height: 100%;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    p {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-100%);
-        width: 100%;
-        text-align: center;
-    }
-
-
-`;
 
 const StyledButton = styled(ButtonFilled)`
-
-
-
-    z-index: 10;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 100;
+    width: 70%;
 
 `;
 
@@ -257,3 +252,10 @@ const StyledOutlinedButton = styled(ButtonOutlined)`
     margin-left: 1rem;
  `;
 
+const StyledLetterGlitch = styled(LetterGlitch)`
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+
+`;
