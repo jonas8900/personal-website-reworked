@@ -24,13 +24,13 @@ function BackgroundStarsGroup(){
     return points;
   }
 
-  const [sphere] = useState(() => generateRandomPoints(2000, 1.5)); 
+  const [sphere] = useState(() => generateRandomPoints(100, 1.5)); 
 
   useFrame((state, delta) => {
     if (ref.current) {
-      const d = Math.min(delta, 0.02); 
-      ref.current.rotation.x -= d / 220;
-      ref.current.rotation.y -= d / 290;
+      const d = Math.min(delta, 0.03); 
+      ref.current.rotation.x -= d / 140;
+      ref.current.rotation.y -= d / 210;
     }
   });
 

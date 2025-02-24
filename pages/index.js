@@ -1,261 +1,200 @@
-// pages/index.js
 
-import FadeContent from '@/components/Animations/Blur';
-import LetterGlitch from '@/components/Animations/LetterGlitch';
-import StarsCanvas from '@/components/BackgroundStars/BackgroundStars';
-import ButtonFilled from '@/components/Buttons/buttonFilled';
-import ButtonOutlined from '@/components/Buttons/buttonOutlined';
-import Navigation from '@/components/Navigation/navigation';
-import Termi from '@/components/Terminal/Termi';
-import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import styled from 'styled-components';
+import { blurInAnimation, blurOutAnimation } from "@/components/Animations/blurAnimation";
+import LetterGlitch from "@/components/Animations/LetterGlitch";
+import StarsCanvas from "@/components/BackgroundStars/BackgroundStars";
+import ButtonFilled from "@/components/Buttons/buttonFilled";
+import ButtonOutlined from "@/components/Buttons/buttonOutlined";
+import Navigation from "@/components/Navigation/navigation";
+import AboutMe from "@/components/Pages/aboutme";
+import LandingPage from "@/components/Pages/Landingpage";
+import ProjectPage from "@/components/Pages/Projectpage";
+import SingleProjectPage from "@/components/Pages/SingleProjectPage";
+import Termi from "@/components/Terminal/Termi";
+import { ProjectData } from "@/Data";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
-export default function Home({isMobile, isDesktop, isTV}) {
+export default function Home({ isMobile, isDesktop, isTV }) {
   const [isTermiActive, setIsTermiActive] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const projectSectionRef = useRef(null);
   const homeSectionRef = useRef(null);
+  const aboutmeSectionRef = useRef(null);
+  const sectionsRef = useRef([]);
+  const currentIndex = useRef(0); 
+  let isThrottling = useRef(false); 
+
+  useEffect(() => {
+    function handleScroll(event) {
+      if (isTermiActive) return;
+  
+      event.preventDefault(); 
+ 
+      if (isThrottling.current) {
+        return;
+      }
+
+      isThrottling.current = true;
+      const sections = sectionsRef.current;
+
+      setTimeout(() => {
+        const direction = event.deltaY > 0 ? 1 : -1;
+      
+  
+        if (direction > 0 && currentIndex.current < sections.length - 1) {
+          currentIndex.current += 1;
+        } else if (direction < 0 && currentIndex.current > 0) {
+          currentIndex.current -= 1;
+        }
+  
+        window.scrollTo({
+          top: sections[currentIndex.current].offsetTop,
+          behavior: "smooth",
+        });
+  
+        isThrottling.current = false;
+      }, 500); 
+    }
+    console.log(currentIndex);
+  
+    window.addEventListener("wheel", handleScroll, { passive: false });
+ 
+    return () => window.removeEventListener("wheel", handleScroll);
+
+  }, [isTermiActive, sectionsRef, isThrottling, currentIndex]); 
+  
+
 
   useEffect(() => {
     if (isTermiActive) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [isTermiActive]);
 
+  function handleOpenTermi() {
+    setIsMounted(!isMounted);
+    if (!isTermiActive) {
+      setIsTermiActive(true);
+    }
+  }
+
+  function handleOpenNav() {
+    setIsMounted(!isMounted);
+    if (!isNavOpen) {
+      setIsNavOpen(true);
+    }
+  }
+
+
+
   return (
-    <StyledContentWrapper $istermiactive={isTermiActive}  ref={homeSectionRef}>
+    <StyledContentWrapper $istermiactive={isTermiActive} ref={homeSectionRef}>
       {isTermiActive && (
         <StyledTermiWrapper>
-            <Termi setIsTermiActive={setIsTermiActive} isMobile={isMobile} isDesktop={isDesktop} isTV={isTV}/>
+          <Termi
+            setIsTermiActive={setIsTermiActive}
+            isMobile={isMobile}
+            isDesktop={isDesktop}
+            isTV={isTV}
+            handleOpenTermi={handleOpenTermi}
+            isTermiActive={isTermiActive}
+            isMounted={isMounted}
+            setIsMounted={setIsMounted}
+          />
         </StyledTermiWrapper>
       )}
-    <StyledDiv $istermiactive={isTermiActive}> 
-      <Navigation 
-         isMobile={isMobile} 
-         isDesktop={isDesktop} 
-         isTV={isTV}
-         projectSectionRef={projectSectionRef}
-          homeSectionRef={homeSectionRef}
-      />
-
-      <HeaderContentWrapper>
-        <Header>
-          <h1>Jonas Dally</h1>
-          {isMobile ? (
-            <StyledSecondAnimatedHeadline
-              sequence={[
+       <div ref={(event) => (sectionsRef.current[0] = event)}>
+        <StyledDiv 
+        animationstate={isMounted ? "fadeIn" : "fadeOut"}
+        $ismobile={isMobile}
+        >
+          
+          <StyledNavigation
+            isMobile={isMobile}
+            isDesktop={isDesktop}
+            isTV={isTV}
+            projectSectionRef={projectSectionRef}
+            homeSectionRef={homeSectionRef}
+            aboutmeSectionRef={aboutmeSectionRef}
+            handleOpenNav={handleOpenNav}
+            isNavOpen={isNavOpen}
+            setIsNavOpen={setIsNavOpen}
+            setIs
+          />
         
-                'Frontend Developer',
-                10000, 
-                'Web Developer',
-                10000,
-              ]}
-              wrapper="div"
-              speed={50}
-              
-              cursor={false}
-              repeat={Infinity}
-            /> 
-          ):(
-              <StyledSecondAnimatedHeadline
-                sequence={[
-                 
-                  'Frontend Developer',
-                  10000,
-                  'Web Developer',
-                  10000,
-                ]}
-                wrapper="div"
-                speed={50}
-              
-                cursor={false}
-                repeat={Infinity}
-              />
-            )}
-         
-          <p>Warum einfach wenn man auch mich haben kann? Lorem upson dorol lorem derem serum dolar mared interad damaro.</p>
-          <ButtonFilled>
-             Hilfe
-          </ButtonFilled>
-          <StyledOutlinedButton >
-            Mehr
-          </StyledOutlinedButton>
-        </Header>
-        <StyledLetterGlitch glitchSpeed={20}>
-          <StyledButton onClick={() => setIsTermiActive(true)}>
-            Aktiviere Terminal
-          </StyledButton>
-        </StyledLetterGlitch>  
-      </HeaderContentWrapper>
-      </StyledDiv>
-      <ProjectContent ref={projectSectionRef}>
-        <div>
-          <h2>Projekte</h2>
-          <Image src="/images/placeholder.jpg" alt="placeholder" width={500} height={500} />
-        </div>
-        
-      </ProjectContent>
+            <LandingPage
+              isMobile={isMobile}
+              isDesktop={isDesktop}
+              isTV={isTV}
+              handleOpenTermi={handleOpenTermi}
+              animationstate={isMounted ? "fadeIn" : "fadeOut"}
+            />
+          
+        </StyledDiv>
+      </div>
+      <div ref={(event) => (sectionsRef.current[1] = event)}>
+        <AboutMe aboutmeSectionRef={aboutmeSectionRef}/>
+      </div>
+      <div ref={(event) => (sectionsRef.current[2] = event)}>
+        <ProjectPage
+          isMobile={isMobile}
+          isDesktop={isDesktop}
+          isTV={isTV}
+          projectSectionRef={projectSectionRef}
+          projectData={ProjectData}
+        />
+      </div>
+      <div ref={(event) => (sectionsRef.current[3] = event)}>
+        <SingleProjectPage
+          isMobile={isMobile}
+          isDesktop={isDesktop}
+          isTV={isTV}
+          projectSectionRef={projectSectionRef}
+          projectData={ProjectData}
+        />
+      </div>
       <StarsCanvas />
-     </StyledContentWrapper>
-
+    </StyledContentWrapper>
   );
 }
 
 const StyledContentWrapper = styled.div`
-  max-height: ${({ $istermiactive }) => ($istermiactive ? '100vh' : 'auto')};
+  max-height: ${({ $istermiactive }) => ($istermiactive ? "100vh" : "100%")};
   overflow: hidden;
-  `;
+`;
 
 const StyledDiv = styled.div`
-    filter: ${({ $istermiactive }) => ($istermiactive ? 'blur(5px)' : 'none')};
-    width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    padding: 0 10% 0 10%;
-
+  ${({ animationstate, $ismobile }) => $ismobile ? null  : animationstate === "fadeIn"  && blurInAnimation}
+  ${({ animationstate, $ismobile  }) => $ismobile ? null :  animationstate === "fadeOut" && blurOutAnimation}
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0 10% 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
 const StyledTermiWrapper = styled.div`
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
-    width: 100%;
-
-    @media (min-width: 768px) {
-      width: 50%;
-      top: 50%;
-    }
-`;
-
-//Landing Page
-const HeaderContentWrapper = styled.div`
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8rem;
-    gap: 10rem;
-    position: relative;
-    z-index: 10;
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      width: 100%;
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12rem;
-      position: relative;
-      z-index: 10;
-    }
-`;
-
-const Header = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
   width: 100%;
 
-  h1 {
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: 'Poppins';
-    color: #12D700;
-    text-shadow: 0px 8px 31px #12D700;
-  }
-
-  h2 {
-    color: #12D700;
-    font-family: "Press Start 2P";
-    font-size: 1.2rem;
-    font-weight: 400;
-    letter-spacing: -0.0875rem;
-  }
-
-  p {
-    color: #FFF;
-    font-family: "DM Sans";
-    font-size: 1rem;
-    width: 90%;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    width: 60%;
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    h2 {
-      font-size: 3rem;
-    }
-
-    p {
-      font-size: 1.5rem;
-      width: 70%;
-      margin-bottom: 3rem;
-    }
-  }
-`;
-
-
-
-const StyledSecondAnimatedHeadline = styled(TypeAnimation)`
-  color: #12D700 !important;
-  font-family: "Press Start 2P" !important;
-  font-size: 1.2rem !important;
-  font-weight: 400 !important;
-  min-height: 2rem;
-  letter-spacing: -0.0875rem !important;
-
-  @media (min-width: 768px) { 
-    font-size: 3rem !important;
-    min-height: 4rem;
-  }
-`;
-
-
-
-//Projects
-
-const ProjectContent = styled.div`
-  width: 100%;
-  height: 100vh;
-
-
-  h2 {
-    color: #12D700;
-    font-size: 3rem;
-
-  }
-`;
-
-
-const StyledButton = styled(ButtonFilled)`
-    position: absolute;
+    @media (min-width: 768px) {
+    width: 50%;
     top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    z-index: 100;
-    width: 70%;
-
+  }
 `;
 
-const StyledOutlinedButton = styled(ButtonOutlined)`
-    margin-left: 1rem;
- `;
-
-const StyledLetterGlitch = styled(LetterGlitch)`
-    max-width: 500px;
-    width: 100%;
-    height: 100%;
-    max-height: 500px;
-
+const StyledNavigation = styled(Navigation)`
+  position: absolute;
+  top: 0;
 `;

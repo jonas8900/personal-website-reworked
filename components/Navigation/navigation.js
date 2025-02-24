@@ -1,21 +1,24 @@
-import Link from "next/link";
 import styled from "styled-components";
 import BurgerMenu from "./burgermenu";
-import { useState } from "react";
+
 
 export default function Navigation({
-  isMobile,
-  isDesktop,
-  isTV,
-  projectSectionRef,
+    isMobile,
+    isDesktop,
+    isTV,
+    projectSectionRef,
     homeSectionRef,
+    handleOpenNav,
+    isNavOpen,
+    setIsNavOpen,
+    className,
+    aboutmeSectionRef
 }) {
-  const [isOpen, setIsOpen] = useState(false);
 
   function handleScrollIntoView(ref) {
     if (ref?.current) {
         ref.current.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
+        setIsNavOpen(false);
     }
   }
 
@@ -23,9 +26,9 @@ export default function Navigation({
     <>
       {isMobile ? (
         <>
-          <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-          {isOpen && (
-            <StyledMobileNav $isopen={isOpen}>
+          <BurgerMenu isNavOpen={isNavOpen} handleOpenNav={handleOpenNav} setIsNavOpen={setIsNavOpen}/>
+          {isNavOpen && (
+            <StyledMobileNav $isopen={isNavOpen}>
               <StyledMobileUl>
                 <StyledLi>
                   <StyledLink 
@@ -54,13 +57,13 @@ export default function Navigation({
           )}
         </>
       ) : (
-        <StyledNav>
+        <StyledNav className={className}>
           <StyledHeadline>Jonas Dally</StyledHeadline>
           <StyledUl>
             <StyledLi>
               <StyledLink 
                     type="button"
-                    onClick={() => handleScrollIntoView(homeSectionRef)}
+                    onClick={() => handleScrollIntoView(aboutmeSectionRef)}
               >About</StyledLink>
             </StyledLi>
             <StyledLi>
@@ -94,14 +97,14 @@ const StyledMobileNav = styled.nav`
   align-items: center;
   font-family: "Poppins", sans-serif;
   font-size: 1.2rem;
-  z-index: 100;
+  z-index: 999;
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   margin: 0;
-  backdrop-filter: ${({ $isopen }) => ($isopen ? "blur(3px)" : "none")};
+  backdrop-filter: blur(1px);
 `;
 
 const StyledMobileUl = styled.ul`
@@ -124,9 +127,9 @@ const StyledNav = styled.nav`
   align-items: center;
   font-family: "Poppins", sans-serif;
   font-size: 1.2rem;
-  position: relative;
+  width: 100%;
   z-index: 100;
-  padding: 0.6rem;
+  padding: 0 10% 0 10%;
   z-index: 100;
   backdrop-filter: blur(1px);
 `;
@@ -161,4 +164,5 @@ const StyledLink = styled.button`
 
 const StyledHeadline = styled.h1`
   font-size: 1.5rem;
+
 `;

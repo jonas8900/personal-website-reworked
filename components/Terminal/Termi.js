@@ -7,6 +7,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { RiRobot2Line } from "react-icons/ri";
 import { TypeAnimation } from "react-type-animation";
+import { fadeInAnimation, fadeOutAnimation } from "../Animations/fadeInAnimation";
+
 
 const SkillSetFrontend = [
   "Next.js",
@@ -21,7 +23,7 @@ const SkillSetFrontend = [
 ];
 const SkillSetBackend = ["MongoDB", "Node.js", "MySQL", "PHP"];
 
-export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
+export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV, isMounted, setIsMounted, isTermiActive, handleOpenTermi }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [disableAfterInput, setDisableAfterInput] = useState(false);
@@ -30,15 +32,7 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
   const [error, setError] = useState("");
 
 
-  useEffect(() => {
-    setMessages([
-      {
-        role: "assistant",
-        content: `Hallo, ich bin Termi, der persönliche Assistent von Jonas. Wenn du etwas über ihn erfahren willst, frag gerne mich! Ich kann dir bestimmt helfen!`,
-      },
-    ]);
-  }, []);
-
+  //scrolling
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -56,6 +50,16 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
     }
   }, [typingStatus]);
 
+  //Chatbot
+  useEffect(() => {
+    setMessages([
+      {
+        role: "assistant",
+        content: `Hallo, ich bin Termi, der persönliche Assistent von Jonas. Wenn du etwas über ihn erfahren willst, frag gerne mich! Ich kann dir bestimmt helfen!`,
+      },
+    ]);
+  }, []);
+
   useEffect(() => {
     if (error) {
       setMessages([...messages, { role: "assistant", content: error }]);
@@ -66,7 +70,6 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
     e.preventDefault();
     setDisableAfterInput(true);
 
-    console.log(!input);
     if (!input) return;
 
     const newMessages = [...messages, { role: "user", content: input }];
@@ -92,17 +95,36 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
     }
   }
 
+
+  function handleOnclickItem(skill) {
+    console.log(skill)
+  }
+
   return (
     <>
     {isMobile ? (
-         <StyledWrapper >
+         <StyledWrapper 
+            animationstate={isMounted ? "fadeIn" : "fadeOut"}
+            onAnimationEnd={() => {
+                if (!isMounted) {
+                    setIsTermiActive(false);
+                }
+            }}
+         >
          <TopBar>
            <div>
              <DownIcon />
            </div>
            <div>
-             <MinusIcon onClick={() => setIsTermiActive(false)} />
-             <CloseIcon onClick={() => setIsTermiActive(false)} />
+             <MinusIcon 
+                animationstate={isMounted ? "fadeIn" : "fadeOut"}
+                onClick={() => setIsMounted(!isMounted)} 
+             
+             />
+             <CloseIcon 
+                animationstate={isMounted ? "fadeIn" : "fadeOut"}
+                onClick={() => setIsMounted(!isMounted)} 
+                />
            </div>
          </TopBar>
          <StyledTerminal>
@@ -163,14 +185,28 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV }) {
          </StyledTerminal>
        </StyledWrapper>
     ) : (
-    <StyledWrapper>
+    <StyledWrapper
+        animationstate={isMounted ? "fadeIn" : "fadeOut"}
+        onAnimationEnd={() => {
+            if (!isMounted) {
+                setIsTermiActive(false);
+            }
+        }}
+    >
       <TopBar>
         <div>
           <DownIcon />
         </div>
         <div>
-          <MinusIcon onClick={() => setIsTermiActive(false)} />
-          <CloseIcon onClick={() => setIsTermiActive(false)} />
+            <MinusIcon 
+                    animationstate={isMounted ? "fadeIn" : "fadeOut"}
+                    onClick={() => setIsMounted(!isMounted)} 
+                
+                />
+             <CloseIcon 
+                animationstate={isMounted ? "fadeIn" : "fadeOut"}
+                onClick={() => setIsMounted(!isMounted)} 
+                />
         </div>
       </TopBar>
       <StyledTerminal>
@@ -281,6 +317,8 @@ const StyledWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+    ${({ animationstate }) => animationstate === "fadeIn" && fadeInAnimation}
+    ${({ animationstate }) => animationstate === "fadeOut" && fadeOutAnimation}
 
 
 
@@ -346,12 +384,16 @@ const CloseIcon = styled(IoMdCloseCircleOutline)`
   font-size: 1.2rem;
   color: #f80c0c;
   cursor: pointer;
+  ${({ animationstate }) => animationstate === "fadeIn" && fadeInAnimation}
+  ${({ animationstate }) => animationstate === "fadeOut" && fadeOutAnimation}
 `;
 
 const MinusIcon = styled(FaMinus)`
   margin-right: 1rem;
   cursor: pointer;
   color: #d5fb00;
+      ${({ animationstate }) => animationstate === "fadeIn" && fadeInAnimation}
+    ${({ animationstate }) => animationstate === "fadeOut" && fadeOutAnimation}
 `;
 
 //Chatbox
@@ -562,6 +604,7 @@ const FolderItems = styled.div`
     font-size: 12px;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+
 
     &:hover,
     &:active {

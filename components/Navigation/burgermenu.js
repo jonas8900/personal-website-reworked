@@ -1,14 +1,16 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function BurgerMenu({ isOpen, setIsOpen }) {
+export default function BurgerMenu({ isNavOpen, setIsNavOpen, handleOpenNav }) {
+
+    
 
     
     return (
-        <BurgerMenuWrapper onClick={() => setIsOpen(!isOpen)}>
-            <StyledLine $isopen={isOpen} position="top" />
-            {!isOpen && <StyledLine $isopen={isOpen} position="middle" />}
-            <StyledLine $isopen={isOpen} position="bottom" />
+        <BurgerMenuWrapper onClick={() => setIsNavOpen(!isNavOpen)}>
+            <StyledLine $isopen={isNavOpen} position="top" />
+            {!isNavOpen && <StyledLine $isopen={isNavOpen} position="middle" />}
+            <StyledLine $isopen={isNavOpen} position="bottom" />
         </BurgerMenuWrapper>
     );
 }
@@ -23,7 +25,7 @@ const BurgerMenuWrapper = styled.div`
     top: 1.5rem;
     cursor: pointer;
     height: 1.2rem;
-    z-index: 999;
+    z-index: 9999;
 `;
 
 const StyledLine = styled.div`
