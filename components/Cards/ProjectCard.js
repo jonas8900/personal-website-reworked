@@ -3,7 +3,7 @@ import { useRef } from "react";
   
 
 
-export default function ProjectCard({ headline, icon: Icon, description }) {
+export default function ProjectCard({ headline, icon: Icon, description, onClick }) {
  const divRef = useRef(null);
  const spotlightColor = "rgba(255, 255, 255, 0.25)";
 
@@ -34,7 +34,7 @@ export default function ProjectCard({ headline, icon: Icon, description }) {
             <StyledParagraph>
                 {description}
             </StyledParagraph>
-            <StyledButton>zum Projekt</StyledButton>
+            <StyledButton onClick={onClick}>zum Projekt</StyledButton>
         </StyledSection>
 
   );

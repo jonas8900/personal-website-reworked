@@ -6,35 +6,47 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 
-export default function ProjectPage({ isMobile, isDesktop, isTV, projectSectionRef, projectData }) {
+export default function ProjectPage({  projectSectionRef, setProjectPageIndex, setGoToProjectClicked }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
 
+  function handleChangePages(index) {
+    setProjectPageIndex(index);
+    setGoToProjectClicked(true);
+  }
 
   return (
-    <ProjectContent 
-      ref={projectSectionRef}
+      <ProjectContent 
+        initial={{ opacity: 0, y: 0 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ delay: 0.2, duration: 0.4 }}
+        ref={projectSectionRef}
       >
+
         <ProjectHeadlineWrapper 
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
+        
+         
+          
         >
-            <h2 ref={ref}>Projekte</h2>
+            <h2  ref={ref}>Projekte</h2>
             <Image src="/images/plants.jpg" alt="Projektbild" width={4900} height={4900} loading='lazy'/>
         </ProjectHeadlineWrapper>
         <ProjectCards
-          initial={{ y: 50, opacity: 0 }}
+          
+          initial={{ y: 0, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.4, duration: 0.5 }} 
+
         >
         {ProjectData.map((project, index) => (
-            <ProjectCard key={index}
-            headline={project.title}
-            icon={project.icon}
-            description={project.description}>
-            </ProjectCard>
+            <ProjectCard 
+                key={project.id}
+                headline={project.title}
+                icon={project.icon}
+                description={project.description}
+                onClick={() => handleChangePages(index)}
+            />
         ))}
         </ProjectCards>   
     </ProjectContent>
@@ -51,9 +63,9 @@ const ProjectContent = styled(motion.section)`
     min-height: 100vh;
     padding-top: 4rem;
 
-
     @media  (min-width: 768px) {
         padding-top: 0;
+
     }
 `;
 

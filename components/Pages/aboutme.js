@@ -25,7 +25,7 @@ export default function AboutMe({ aboutmeSectionRef }) {
 
     return (
         <StyledBlackBackground ref={aboutmeSectionRef}>
-            <StyledBackground>
+            <StyledBackground >
                 <StyledContentWrapper
                 >
                     <StyledTextContainer
@@ -81,7 +81,7 @@ export default function AboutMe({ aboutmeSectionRef }) {
                           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
                           transition={{ delay: 0.5, duration: 0.4 }}
                     >
-                        <TiltedCard
+                        <TitleCardStyled
                             imageSrc="/images/aboutme.webp"
                             altText="Jonas Dally - Frontend Developer"
                             captionText="Jonas Dally - Frontend Developer"
@@ -108,6 +108,7 @@ const StyledBlackBackground = styled.div`
     /* background: #000; */
     width: 100%;
     height: 100%;
+    max-width: 100vw;
     /* background-image: url('/images/background-test.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
@@ -117,27 +118,57 @@ const StyledBlackBackground = styled.div`
 
 const StyledBackground = styled.section`
     display: flex;
-    justify-content: center;
     align-items: center;
-
     height: 100vh;
-    width: 50%;
-
+    width: 100%;
 
     @media (min-width: 768px) {
         width: 100%;
+        justify-content: center;
+    }
+`;
+
+const TitleCardStyled = styled(TiltedCard)`
+    @media (max-width: 768px) {
+        width: 100%;
+        max-height: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+    div {
+        width: 100%;
+        height: 100%;
+
     }
 
+    p {
+        font-size: 1rem;
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+
+
+    }
+}
 
 `;
 
 const StyledContentWrapper = styled(motion.div)`
     display: flex;
-    align-items: flex-start;
+    width: 100%;
     gap: 2rem;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
 
     @media (min-width: 768px) {
+        width: auto;
+        justify-content: auto;
+        align-items: flex-start;
         flex-direction: row;
         gap: 6rem;
     }
@@ -168,27 +199,30 @@ const StyledTextContainer = styled(motion.div)`
     height: 20rem;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+
     color: #FFF;
 
     @media (min-width: 768px) {
         width: 36rem;
         height: 30rem;
+        padding: 2rem;
     }
 `;
 
 const StyledImageWrapper = styled(motion.div)`
     background: rgba(123, 123, 123, 0.30);
     box-shadow: 8px 7px 10px 0px rgba(24, 24, 24, 0.25);
-    width: 50%;
-    height: 20rem;
+    width: 100%;
+    height: 100%;
+    max-height: 20rem;
     display: flex;
     justify-content: center;
-    border: 1px solid red;
 
     @media (min-width: 768px) {
         width: 45rem;
         height: 30rem;
+        max-width: 45rem;
+        max-height: 30rem;
         align-items: center;
     }
 `;
@@ -204,9 +238,16 @@ const StyledHeadline = styled.h1`
 
 
 const StyledText = styled(TypeAnimation)`
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-size: 1.125rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0rem;
+    font-size: 14px!important;
+
+    @media (min-width: 768px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-size: 1.125rem;
+    }
 `;
 
 const StyledCardParagraph = styled.p`

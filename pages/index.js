@@ -9,6 +9,7 @@ import AboutMe from "@/components/Pages/aboutme";
 import LandingPage from "@/components/Pages/Landingpage";
 import ProjectPage from "@/components/Pages/Projectpage";
 import SingleProjectPage from "@/components/Pages/SingleProjectPage";
+import Timeline from "@/components/Pages/Timeline";
 import Termi from "@/components/Terminal/Termi";
 import { ProjectData } from "@/Data";
 import React, { useEffect, useRef, useState } from "react";
@@ -21,16 +22,42 @@ export default function Home({ isMobile, isDesktop, isTV }) {
   const projectSectionRef = useRef(null);
   const homeSectionRef = useRef(null);
   const aboutmeSectionRef = useRef(null);
+  const timelineSectionRef = useRef(null);
   const sectionsRef = useRef([]);
   const currentIndex = useRef(0); 
+  const [projectPageIndex, setProjectPageIndex]= useState(0);
+  const [goToProjectClicked, setGoToProjectClicked] = useState(false);
   let isThrottling = useRef(false); 
+
+  const setCurrentIndex = (index) => {
+    currentIndex.current = index;
+  };
+
+  useEffect(() => {
+    if (goToProjectClicked) {
+
+      currentIndex.current += 1;
+      setProjectPageIndex((prevIndex) => prevIndex);
+
+
+      const sections = sectionsRef.current;
+      if (sections[currentIndex.current]) {
+        window.scrollTo({
+          top: sections[currentIndex.current].offsetTop,
+          behavior: "smooth",
+        });
+      }
+      setGoToProjectClicked(false);
+    }
+  }, [goToProjectClicked]);
+
 
   useEffect(() => {
     function handleScroll(event) {
       if (isTermiActive) return;
-  
+
       event.preventDefault(); 
- 
+
       if (isThrottling.current) {
         return;
       }
@@ -40,30 +67,27 @@ export default function Home({ isMobile, isDesktop, isTV }) {
 
       setTimeout(() => {
         const direction = event.deltaY > 0 ? 1 : -1;
-      
-  
+
         if (direction > 0 && currentIndex.current < sections.length - 1) {
           currentIndex.current += 1;
-        } else if (direction < 0 && currentIndex.current > 0) {
+        } 
+        else if (direction < 0 && currentIndex.current > 0) {
           currentIndex.current -= 1;
         }
-  
+
         window.scrollTo({
           top: sections[currentIndex.current].offsetTop,
           behavior: "smooth",
         });
-  
+
         isThrottling.current = false;
       }, 500); 
     }
-    console.log(currentIndex);
-  
-    window.addEventListener("wheel", handleScroll, { passive: false });
- 
-    return () => window.removeEventListener("wheel", handleScroll);
 
-  }, [isTermiActive, sectionsRef, isThrottling, currentIndex]); 
-  
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [isTermiActive, sectionsRef, isThrottling, currentIndex, goToProjectClicked]); 
 
 
   useEffect(() => {
@@ -119,10 +143,13 @@ export default function Home({ isMobile, isDesktop, isTV }) {
             projectSectionRef={projectSectionRef}
             homeSectionRef={homeSectionRef}
             aboutmeSectionRef={aboutmeSectionRef}
+            timelineSectionRef={timelineSectionRef} 
+            currentIndex={currentIndex.current} 
+            setCurrentIndex={setCurrentIndex}   
             handleOpenNav={handleOpenNav}
             isNavOpen={isNavOpen}
             setIsNavOpen={setIsNavOpen}
-            setIs
+
           />
         
             <LandingPage
@@ -136,7 +163,9 @@ export default function Home({ isMobile, isDesktop, isTV }) {
         </StyledDiv>
       </div>
       <div ref={(event) => (sectionsRef.current[1] = event)}>
-        <AboutMe aboutmeSectionRef={aboutmeSectionRef}/>
+        <AboutMe 
+        aboutmeSectionRef={aboutmeSectionRef}
+        />
       </div>
       <div ref={(event) => (sectionsRef.current[2] = event)}>
         <ProjectPage
@@ -145,6 +174,9 @@ export default function Home({ isMobile, isDesktop, isTV }) {
           isTV={isTV}
           projectSectionRef={projectSectionRef}
           projectData={ProjectData}
+          setProjectPageIndex={setProjectPageIndex}
+          projectPageIndex={projectPageIndex}
+          setGoToProjectClicked={setGoToProjectClicked}
         />
       </div>
       <div ref={(event) => (sectionsRef.current[3] = event)}>
@@ -152,8 +184,21 @@ export default function Home({ isMobile, isDesktop, isTV }) {
           isMobile={isMobile}
           isDesktop={isDesktop}
           isTV={isTV}
-          projectSectionRef={projectSectionRef}
           projectData={ProjectData}
+          setProjectPageIndex={setProjectPageIndex}
+          projectPageIndex={projectPageIndex}
+          setGoToProjectClicked={setGoToProjectClicked}
+          goToProjectClicked={goToProjectClicked}
+          setCurrentIndex={setCurrentIndex} 
+
+        />
+      </div>
+      <div ref={(event) => (sectionsRef.current[4] = event)}>
+        <Timeline 
+          isMobile={isMobile}
+          isDesktop={isDesktop}
+          isTV={isTV}
+          timelineSectionRef={timelineSectionRef} 
         />
       </div>
       <StarsCanvas />

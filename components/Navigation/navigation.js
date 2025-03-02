@@ -12,45 +12,60 @@ export default function Navigation({
     isNavOpen,
     setIsNavOpen,
     className,
-    aboutmeSectionRef
+    aboutmeSectionRef,
+    timelineSectionRef,
+    singleProjectSectionRef,
+    currentIndex,
+    setCurrentIndex,
+    goToProjectClicked,
 }) {
 
-  function handleScrollIntoView(ref) {
+  function handleScrollIntoView(ref, index) {
     if (ref?.current) {
-        ref.current.scrollIntoView({ behavior: "smooth" });
-        setIsNavOpen(false);
+      ref.current.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+      setIsNavOpen(false);
+
+     
+      setCurrentIndex(index);  
     }
   }
 
+
   return (
-    <>
+    < >
       {isMobile ? (
         <>
-          <BurgerMenu isNavOpen={isNavOpen} handleOpenNav={handleOpenNav} setIsNavOpen={setIsNavOpen}/>
+          <BurgerMenu isNavOpen={isNavOpen} handleOpenNav={handleOpenNav} setIsNavOpen={setIsNavOpen} />
           {isNavOpen && (
             <StyledMobileNav $isopen={isNavOpen}>
               <StyledMobileUl>
                 <StyledLi>
                   <StyledLink 
                   type="button"
-                  onClick={() => handleScrollIntoView(homeSectionRef)}
-                  >Home</StyledLink>
+                  onClick={() => handleScrollIntoView(homeSectionRef, 0)}
+                  >Start</StyledLink>
                 </StyledLi>
                 <StyledLi>
-                  <StyledLink href="#">Skills</StyledLink>
+                  <StyledLink 
+                  type="button"
+                  onClick={() => handleScrollIntoView(aboutmeSectionRef, 1)}
+                  >About Me</StyledLink>
                 </StyledLi>
                 <StyledLi>
                   <StyledLink
                     type="button"
-                    onClick={() => handleScrollIntoView(projectSectionRef)}>
+                    onClick={() => handleScrollIntoView(projectSectionRef, 2)}>
                     Projekte
                   </StyledLink>
                 </StyledLi>
                 <StyledLi>
-                  <StyledLink href="#">Lebenslauf</StyledLink>
+                  <StyledLink 
+                  type="button"
+                  onClick={() => handleScrollIntoView(timelineSectionRef, 3)}
+                  >Timeline</StyledLink>
                 </StyledLi>
                 <StyledLi>
-                  <StyledLink href="#">Kontakt</StyledLink>
+                  <StyledLink href="#">Lebenslauf</StyledLink>
                 </StyledLi>
               </StyledMobileUl>
             </StyledMobileNav>
@@ -63,25 +78,33 @@ export default function Navigation({
             <StyledLi>
               <StyledLink 
                     type="button"
-                    onClick={() => handleScrollIntoView(aboutmeSectionRef)}
-              >About</StyledLink>
+                    onClick={() => handleScrollIntoView(homeSectionRef, 0)}
+              >Start</StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href="#">Skills</StyledLink>
+              <StyledLink 
+                    type="button"
+                    onClick={() => handleScrollIntoView(aboutmeSectionRef, 1)}
+              >About me</StyledLink>
             </StyledLi>
             <StyledLi>
               <StyledLink 
                 type="button" 
-                onClick={() => handleScrollIntoView(projectSectionRef)}
+                onClick={() => handleScrollIntoView(projectSectionRef, 2)}
               >
                 Projekte
               </StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href="#">Lebenslauf</StyledLink>
+              <StyledLink 
+                type="button" 
+                onClick={() => handleScrollIntoView(timelineSectionRef, 3)}
+              >
+                Timeline
+              </StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href="#">Kontakt</StyledLink>
+              <StyledLink href="#">Lebenslauf</StyledLink>
             </StyledLi>
           </StyledUl>
         </StyledNav>

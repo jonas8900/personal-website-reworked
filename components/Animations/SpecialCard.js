@@ -14,11 +14,13 @@ const Figure = styled.figure`
 
   @media (max-width: 640px) {
     perspective: none;
+
   }
 `;
 
 const MobileAlert = styled.div`
   position: absolute;
+
   top: 1rem;
   text-align: center;
   font-size: 0.875rem;
@@ -100,6 +102,7 @@ export default function TiltedCard({
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
+  className,
 }) {
   const ref = useRef(null);
   const x = useMotionValue();
@@ -152,6 +155,7 @@ export default function TiltedCard({
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      className={className}
     >
       {showMobileWarning && <MobileAlert>This effect is not optimized for mobile. Check on desktop.</MobileAlert>}
       <Inner width={imageWidth} height={imageHeight} style={{ rotateX, rotateY, scale }}>

@@ -4,7 +4,7 @@ import ButtonFilled from '@/components/Buttons/buttonFilled';
 import ButtonOutlined from '@/components/Buttons/buttonOutlined';
 import { TypeAnimation } from 'react-type-animation';
 import styled from 'styled-components';
-import Laptop from '../3DModell/Laptop';
+
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
@@ -17,7 +17,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi}
     return(
         <HeaderContentWrapper 
           ref={ref}
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ opacity: 0, y: 0 }} 
           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
         
@@ -58,7 +58,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi}
               )}
            
             <p>Warum einfach wenn man auch mich haben kann? Lorem upson dorol lorem derem serum dolar mared interad damaro.</p>
-            <ButtonFilled>
+            <ButtonFilled onClick={() => handleOpenTermi(true)}>
                Hilfe
             </ButtonFilled>
             <StyledOutlinedButton >
