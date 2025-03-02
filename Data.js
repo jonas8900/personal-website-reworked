@@ -26,7 +26,7 @@ export const ProjectData = [
             { name: "MongoDB", icon: "/images/mongo-db-icon.svg" },
             { name: "AWS", icon: "/images/aws-icon.svg" },
         ],
-        image: "/images/plan-t-smartphone.svg",
+        image: "/images/plan-t-smartphone.png",
      }, 
     {
         id: 2, 
@@ -48,7 +48,7 @@ export const ProjectData = [
             { name: "Python", icon: "/images/python.svg" },
 
         ],
-        image: "/images/dreamgame-smartphone.svg",
+        image: "/images/dreamgame-smartphone.png",
     },
     {
         id: 3, 
@@ -113,7 +113,7 @@ export const ProjectData = [
         techStack: [
             { name: "Styled Components", icon: "/images/styled-components-icon.svg" },
         ],
-        image: "/images/camerashop-smartphone.svg",
+        image: "/images/camerashop-smartphone.png",
     },
     {
         id: 6, 
