@@ -57,7 +57,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi,
                 />
               )}
            
-            <p>Warum einfach wenn man auch mich haben kann? Lorem upson dorol lorem derem serum dolar mared interad damaro.</p>
+            <p>&quot;Ich schlafe nur, weil ich den Träumen die Bugs lösen kann.&quot;<br></br>Leidenschaftlicher Programmierer mit Hz💚</p>
             <ButtonFilled onClick={() => handleOpenTermi(true)}>
                Hilfe
             </ButtonFilled>

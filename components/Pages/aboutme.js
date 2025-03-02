@@ -121,11 +121,9 @@ export default function AboutMe({ aboutmeSectionRef }) {
 
 
 const StyledBlackBackground = styled.div`
-    /* background: #000; */
     width: 100%;
     height: 100%;
     max-width: 100vw;
-    /* background-image: url('/images/background-test.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
