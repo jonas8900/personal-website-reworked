@@ -65,7 +65,7 @@ export default function Navigation({
                   >Timeline</StyledLink>
                 </StyledLi>
                 <StyledLi>
-                  <StyledLink href="#">Lebenslauf</StyledLink>
+                  <StyledDownload href="/pdf/Jonas-Dally-Lebenslauf.pdf" download="Jonas-Dally-Lebenslauf">Lebenslauf</StyledDownload>
                 </StyledLi>
               </StyledMobileUl>
             </StyledMobileNav>
@@ -104,7 +104,7 @@ export default function Navigation({
               </StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href="#">Lebenslauf</StyledLink>
+              <StyledDownload href="/pdf/Jonas-Dally-Lebenslauf.pdf" download="Jonas-Dally-Lebenslauf">Lebenslauf</StyledDownload>
             </StyledLi>
           </StyledUl>
         </StyledNav>
@@ -170,6 +170,22 @@ const StyledLi = styled.li`
 `;
 
 const StyledLink = styled.button`
+  color: #ededed;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: #12d700;
+    text-shadow: 3px 4px 7.8px rgba(199, 199, 199, 0.4);
+  }
+`;
+
+const StyledDownload = styled.a`
   color: #ededed;
   text-decoration: none;
   transition: all 0.3s ease;
