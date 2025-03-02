@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function ButtonOutlined({ children, className }) {
+export default function ButtonOutlined({ children, className, onClick }) {
   return (
-    <StyledButtonOutlined className={className} s>
+    <StyledButtonOutlined className={className} onClick={onClick}>
       {children}
     </StyledButtonOutlined>
   );

@@ -10,7 +10,7 @@ import { motion, useInView } from 'framer-motion';
 
 
 
-export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi}) {
+export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi, setMoreIsClicked}) {
     const ref = useRef(null);
     const isInView = useInView(ref, {once: false});
 
@@ -61,7 +61,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi}
             <ButtonFilled onClick={() => handleOpenTermi(true)}>
                Hilfe
             </ButtonFilled>
-            <StyledOutlinedButton >
+            <StyledOutlinedButton onClick={() => setMoreIsClicked(true)}>
               Mehr
             </StyledOutlinedButton>
           </Header>

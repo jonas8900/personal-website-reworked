@@ -27,6 +27,7 @@ export default function Home({ isMobile, isDesktop, isTV }) {
   const currentIndex = useRef(0); 
   const [projectPageIndex, setProjectPageIndex]= useState(0);
   const [goToProjectClicked, setGoToProjectClicked] = useState(false);
+  const [moreIsClicked, setMoreIsClicked] = useState(false);
   let isThrottling = useRef(false); 
 
   const setCurrentIndex = (index) => {
@@ -49,7 +50,21 @@ export default function Home({ isMobile, isDesktop, isTV }) {
       }
       setGoToProjectClicked(false);
     }
-  }, [goToProjectClicked]);
+
+    console.log(moreIsClicked);
+    if(moreIsClicked) {
+      currentIndex.current += 1;
+      const sections = sectionsRef.current;
+
+      if (sections[currentIndex.current]) {
+        window.scrollTo({
+          top: sections[currentIndex.current].offsetTop,
+          behavior: "smooth",
+        });
+      }
+      setMoreIsClicked(false);
+    }
+  }, [goToProjectClicked, moreIsClicked]);
 
 
   useEffect(() => {
@@ -158,6 +173,7 @@ export default function Home({ isMobile, isDesktop, isTV }) {
               isTV={isTV}
               handleOpenTermi={handleOpenTermi}
               animationstate={isMounted ? "fadeIn" : "fadeOut"}
+              setMoreIsClicked={setMoreIsClicked}
             />
           
         </StyledDiv>

@@ -26,14 +26,12 @@ export default function ProjectPage({  projectSectionRef, setProjectPageIndex, s
 
         <ProjectHeadlineWrapper 
         
-         
-          
         >
-            <h2  ref={ref}>Projekte</h2>
+            <h2  >Projekte</h2>
             <Image src="/images/plants.jpg" alt="Projektbild" width={4900} height={4900} loading='lazy'/>
         </ProjectHeadlineWrapper>
         <ProjectCards
-          
+          ref={ref}
           initial={{ y: 0, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }} 

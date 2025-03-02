@@ -43,7 +43,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Friends</h2>
                                 <GiThreeFriends />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine Webapp, um mit Freunden abzustimmen und Treffen zu organisieren.</p>
                             </StyledDescriptionDiv>
 
                             <StyledLine $top="8rem" $right 
@@ -58,7 +58,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Company website</h2>
                                 <BsBrowserEdge />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine Website für ein Unternehmen mit Bewerbungsprozess und Adminbereich.</p>
                             </StyledDescriptionDiv>
                             
                         </TimeLineSection>
@@ -76,7 +76,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Personal Website</h2>
                                 <BsBrowserEdge />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine erste Website um meine bisherigen Projekte vorzustellen.</p>
                             </StyledDescriptionDiv>
 
                             <StyledLine $top="2rem" $left 
@@ -91,7 +91,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Camerashop</h2>
                                 <FaCamera />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Ein Shop indem es möglich sein soll, Videotechnik für einen Zeitraum auszuleihen.</p>
                             </StyledDescriptionDiv>
 
                             <StyledLine $top="12rem" $right 
@@ -106,7 +106,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Dreamgame</h2>
                                 <IoLogoGameControllerA />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine Webapp, um die neusten spiele anzuzeigen und ein Tinder-ähnliches Match-System.</p>
                             </StyledDescriptionDiv>
 
                             <StyledLine $top="16rem" $left
@@ -121,7 +121,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Plan-T</h2>
                                 <PiPottedPlantFill />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine Fullstack Webapp mit QR-Code-System für die Pflanzenpflege.</p>
                             </StyledDescriptionDiv>
                         </TimeLineSection>
                         <TimeLineSection>
@@ -138,7 +138,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Jumpa</h2>
                                 <PiPottedPlantFill />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Eine Webapp für den Gastronomiebereich, um schnell Personal oder Jobs zu finden.</p>
                             </StyledDescriptionDiv>
 
                             <StyledLine $top="4rem" $left 
@@ -153,7 +153,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                             >
                                 <h2>Portfolio Website</h2>
                                 <AiOutlineProduct />
-                                <p>lorem ipsum dolor ispum navim deler</p>
+                                <p>Meine eigene Portfolio-Website, um meine Projekte zu präsentieren.</p>
                             </StyledDescriptionDiv>
                         </TimeLineSection>
                     </>
@@ -171,7 +171,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv >
                                     <h2>Friends</h2>
                                     <GiThreeFriends />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine Webapp, um mit Freunden abzustimmen und Treffen zu organisieren.</p>
                                 </StyledDescriptionDesktopDiv>
                                 <StyledDesktopLine />
                             </TimeLineProjectWrapper>
@@ -185,7 +185,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv >
                                     <h2>Company website</h2>
                                     <BsBrowserEdge />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine Website für ein Unternehmen mit Bewerbungsprozess und Adminbereich.</p>
                                 </StyledDescriptionDesktopDiv>
                             </TimeLineProjectWrapper>
                             
@@ -201,7 +201,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv>
                                     <h2>Personal Website</h2>
                                     <BsBrowserEdge />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine erste Website um meine bisherigen Projekte vorzustellen.</p>
                                 </StyledDescriptionDesktopDiv>
                                 <StyledDesktopLine />
                             </TimeLineProjectWrapper>
@@ -215,7 +215,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv>
                                     <h2>Camerashop</h2>
                                     <FaCamera />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Ein Shop indem es möglich sein soll, Videotechnik für einen Zeitraum auszuleihen.</p>
                                 </StyledDescriptionDesktopDiv>
                             </TimeLineProjectWrapper>
 
@@ -228,7 +228,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv >
                                     <h2>Dreamgame</h2>
                                     <IoLogoGameControllerA />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine Webapp, um die neusten spiele anzuzeigen und ein Tinder-ähnliches Match-System.</p>
                                 </StyledDescriptionDesktopDiv>
                                 <StyledDesktopLine />
                             </TimeLineProjectWrapper>
@@ -242,7 +242,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv>
                                     <h2>Plan-T</h2>
                                     <PiPottedPlantFill />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine Fullstack Webapp mit QR-Code-System für die Pflanzenpflege.</p>
                                 </StyledDescriptionDesktopDiv>
                             </TimeLineProjectWrapper>
                         </TimeLineSection>
@@ -257,7 +257,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv>
                                     <h2>Jumpa</h2>
                                     <PiPottedPlantFill />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Eine Webapp für den Gastronomiebereich, um schnell Personal oder Jobs zu finden.</p>
                                 </StyledDescriptionDesktopDiv>
                                 <StyledDesktopLine/>
                             </TimeLineProjectWrapper>
@@ -271,7 +271,7 @@ export default function Timeline({isMobile, isDesktop, isTV, timelineSectionRef}
                                 <StyledDescriptionDesktopDiv >
                                     <h2>Portfolio Website</h2>
                                     <AiOutlineProduct />
-                                    <p>lorem ipsum dolor ispum navim deler</p>
+                                    <p>Meine eigene Portfolio-Website, um meine Projekte zu präsentieren.</p>
                                 </StyledDescriptionDesktopDiv>
                             </TimeLineProjectWrapper>
                         </TimeLineSection>

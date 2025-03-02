@@ -51,20 +51,36 @@ export default function AboutMe({ aboutmeSectionRef }) {
                             <StyledText
                                 key={animationKey}
                                 sequence={[
-                                    "Ich bin Jonas Dally, ein Frontend-Entwickler aus Deutschland und ich liebe es, Webseiten zu erstellen.",
-                                    1000,
-                                    "Ich bin Jonas Dally, ein Frontend-Entwickler aus Deutschland und ich liebe es, Webseiten zu erstellen.\n" +
-                                    "Ich habe Erfahrung in der Erstellung von Webseiten mit React, Next.js und Tailwind CSS.",
-                                    1000,
-                                    "Ich bin Jonas Dally, ein Frontend-Entwickler aus Deutschland und ich liebe es, Webseiten zu erstellen.\n" +
-                                    "Ich habe Erfahrung in der Erstellung von Webseiten mit React, Next.js und Tailwind CSS.\n" +
-                                    "Ich bin auch ein großer Fan von 3D-Modellierung und habe Erfahrung mit Blender und Three.js.",
-                                    1000,
-                                    "Ich bin Jonas Dally, ein Frontend-Entwickler aus Deutschland und ich liebe es, Webseiten zu erstellen.\n" +
-                                    "Ich habe Erfahrung in der Erstellung von Webseiten mit React, Next.js und Tailwind CSS.\n" +
-                                    "Ich bin auch ein großer Fan von 3D-Modellierung und habe Erfahrung mit Blender und Three.js.\n" +
-                                    "Ich bin immer auf der Suche nach neuen Herausforderungen und freue mich darauf, mit Ihnen zusammenzuarbeiten.",
-                                    3000,
+                                    
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.",
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
+                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.",
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
+                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.",
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
+                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
+                                        "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.",
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
+                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
+                                        "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.\n" +
+                                        "Es macht mir einfach sehr viel Spaß, neue Ideen umzusetzen und mich ständig weiterzuentwickeln.",
+                                        1000,
+                                        "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
+                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
+                                        "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.\n" +
+                                        "Es macht mir einfach sehr viel Spaß, neue Ideen umzusetzen und mich ständig weiterzuentwickeln.\n" +
+                                        "Für mich ist Programmieren mehr als nur ein Job.",
+                                        3000,
+
                                 ]}
                                 speed={80}
                                 omitDeletionAnimation={true}

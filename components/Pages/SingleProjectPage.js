@@ -23,17 +23,6 @@ export default function SingleProjectPage({ isMobile, isDesktop, isTV, setProjec
     };
 
 
-    // useEffect(() => {
-    //     if (goToProjectClicked) {
-    //         singleProjectSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-    //         setCurrentIndex(3);
-    //         setGoToProjectClicked(false);
-    //     }  
-           
-
-    // }, [goToProjectClicked]);
-
-
     return (
         <StyledDiv 
         ref={singleProjectSectionRef}
@@ -60,7 +49,27 @@ export default function SingleProjectPage({ isMobile, isDesktop, isTV, setProjec
                         transition={{ delay: 0.2, duration: 0.5 }}
                     >
                         <StyledHeadline>{ProjectData[projectPageIndex].title}</StyledHeadline>
-                        <StyledParagraph>{ProjectData[projectPageIndex].fullDescription}</StyledParagraph>
+                        {ProjectData[projectPageIndex].vercellink ? (
+                        <StyledLink 
+                            href={ProjectData[projectPageIndex].vercellink} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            gradient={ProjectData[projectPageIndex].gradient}
+                            >Projektseite anschauen</StyledLink>
+                        ) : (
+                            <StyledLink 
+                            href={ProjectData[projectPageIndex].githublink} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            gradient={ProjectData[projectPageIndex].gradient}
+                            >Githublink anschauen</StyledLink>
+                        )}
+                        {ProjectData[projectPageIndex].color ? (
+                            <StyledParagraph color={ProjectData[projectPageIndex].color}>{ProjectData[projectPageIndex].fullDescription}</StyledParagraph>
+                        ) : (
+                            <StyledParagraph color="white">{ProjectData[projectPageIndex].fullDescription}</StyledParagraph>
+                        )}
+                        
                         <StyledIconWrapper>
                             <StyledNextJSIcon />
                             {ProjectData[projectPageIndex].techStack.map((icon, index) => (
@@ -172,6 +181,25 @@ const StyledArticle = styled(motion.article)`
     }
 `;
 
+const StyledLink = styled.a`
+    font-family: Poppins;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: ${({ gradient }) => gradient};
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+        background-color: #12D700;
+    }
+`;
+
 const StyledImage = styled(motion.img)`
     margin-top: 2rem; 
     margin-left: 2rem;
@@ -203,7 +231,7 @@ const StyledHeadline = styled.h1`
 `;
 
 const StyledParagraph = styled.p`
-    color: #FFF;
+    color: ${({ color }) => color};
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
     font-family: Poppins;
     font-size: 14px;
