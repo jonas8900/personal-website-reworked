@@ -124,7 +124,7 @@ const ProjectCards = styled(motion.div)`
     justify-content: space-around;
     align-items: center;
     width: fit-content;
-    margin: 4rem auto;
+    margin: 1rem auto;
     gap: 4rem;
   }
 
