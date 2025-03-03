@@ -56,25 +56,25 @@ export default function AboutMe({ aboutmeSectionRef }) {
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.",
                                         1000,
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
-                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.",
+                                        "Beruflich arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
                                         1000,
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
-                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Beruflich arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
                                         "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.",
                                         1000,
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
-                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Beruflich arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
                                         "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
                                         "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.",
                                         1000,
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
-                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Beruflich arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
                                         "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
                                         "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.\n" +
                                         "Es macht mir einfach sehr viel Spaß, neue Ideen umzusetzen und mich ständig weiterzuentwickeln.",
                                         1000,
                                         "Ich bin ein großer Fan von Next.js und Styled Components und setze diese Technologien leidenschaftlich in meinen Projekten ein.\n" +
-                                        "Auf der Arbeit arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
+                                        "Beruflich arbeite ich jedoch hauptsächlich mit PHP, Less und Smarty, was meine Fähigkeiten verbessert hat.\n" +
                                         "Ich habe viel über Performanceoptimierung, schnelle Lösungen und vor allem über die Bedeutung von sauberem Code gelernt.\n" +
                                         "Trotz der intensiven Arbeit dort habe ich nie den Fokus auf meine privaten Projekte verloren, weil ich in meiner Freizeit genauso gerne programmiere.\n" +
                                         "Es macht mir einfach sehr viel Spaß, neue Ideen umzusetzen und mich ständig weiterzuentwickeln.\n" +

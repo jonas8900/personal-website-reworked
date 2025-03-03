@@ -57,7 +57,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi,
                 />
               )}
            
-            <p>&quot;Ich schlafe nur, weil ich den Träumen die Bugs lösen kann.&quot;<br></br>Leidenschaftlicher Programmierer mit Hz💚</p>
+            <p>&quot;Ich schlafe nur, weil ich in meinen Träumen die Bugs lösen kann.&quot;<br></br>Leidenschaftlicher Programmierer mit Hz💚</p>
             <ButtonFilled onClick={() => handleOpenTermi(true)}>
                Hilfe
             </ButtonFilled>
