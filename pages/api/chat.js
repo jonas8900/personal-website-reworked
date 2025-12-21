@@ -97,7 +97,13 @@ export default async function handler(req, res) {
             7️ STR8 (Firmenprojekt)
               - Beschreibung: STR8 ist ein Unternehmen, das sich auf Event-Technologien spezialisiert hat. Als IT-Spezialist für Event-Technologien entwickelt Jonas Check-ins, QR-Code-Systeme, Web-Apps, Kundenportale, Registrierungen und Live-Monitore für den Ergebnisvergleich der Webapp. <br /><br />
                 Die Technologien, die Jonas bei STR8 verwendet, sind PHP (firmeneigenes Framework), Less, Smarty, Redis, Docker und MySQL. Er arbeitet eng mit dem Team zusammen, um innovative Lösungen zu entwickeln und die Event-Technologien stetig zu verbessern.
-              
+                
+            2️ TheBuzz (Live-Quiz & Buzzer-Plattform)
+                - Beschreibung: TheBuzz ist eine Fullstack-Webanwendung für interaktive Live-Quizformate mit Echtzeit-Buzzer-Mechanik, entwickelt mit Next.js, React, Node.js, Express und MongoDB. Über ein Admin-Dashboard können Spiele erstellt, Fragen verwaltet und Spielrunden live gesteuert werden, während Teilnehmende über ihre Geräte in Echtzeit antworten oder buzzern.
+                  Die Kommunikation zwischen Clients und Server erfolgt über WebSockets, um sofortige Status-Updates, Spieleraktionen und Live-Auswertungen zu ermöglichen. Unterschiedliche Fragetypen (z. B. Multiple Choice, Buzzer-Fragen) sowie flexible Spielmodi sorgen für abwechslungsreiche Quizabläufe.
+                  Der Fokus liegt auf performanter Echtzeit-Interaktion, klarer Rollenverteilung (Admin vs. Spieler) und einer skalierbaren Architektur, die sowohl für kleine Gruppen als auch größere Events geeignet ist. Ideal für Events, Spieleabende oder interaktive Quizformate mit Wettbewerbscharakter.
+                                
+
             ### 🤖 Wichtige Chatbot-Regeln:  
             - Falls jemand nach Projekten fragt, gib ein Projekt an und frage, ob du mehr Informationen dazu geben sollst.
             - Falls jemand nach einer allgemeinen Programmierfrage fragt, sage: „Ich kann nur über Jonas und seine Arbeit sprechen.“  

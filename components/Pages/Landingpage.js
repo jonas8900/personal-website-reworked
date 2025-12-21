@@ -29,7 +29,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi,
               <StyledSecondAnimatedHeadline
                 sequence={[
           
-                  'Frontend Developer',
+                  'Fullstack Developer',
                   10000, 
                   'Web Developer',
                   10000,
@@ -44,7 +44,7 @@ export default function LandingPage({isMobile, isDesktop, isTV, handleOpenTermi,
                 <StyledSecondAnimatedHeadline
                   sequence={[
                    
-                    'Frontend Developer',
+                    'Fullstack Developer',
                     10000,
                     'Web Developer',
                     10000,

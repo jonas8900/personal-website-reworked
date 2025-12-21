@@ -17,11 +17,12 @@ const SkillSetFrontend = [
   "jQuery",
   "Styled components",
   "CSS",
+  "Tailwind CSS",
   "LESS",
   "HTML",
   "Smarty",
 ];
-const SkillSetBackend = ["MongoDB", "Node.js", "MySQL", "PHP"];
+const SkillSetBackend = ["MongoDB", "Node.js", "MySQL", "PHP", "Express.js", "PostgreSQL"];
 
 export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV, isMounted, setIsMounted, isTermiActive, handleOpenTermi }) {
   const [messages, setMessages] = useState([]);
@@ -129,7 +130,7 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV, isM
          </TopBar>
          <StyledTerminal>
            <ChatWrapper>
-             <h2>Frontend Developer</h2>
+             <h2>Web Developer</h2>
              <StyledChatBox>
                {messages.map((message, index) => {
                  if (message.role === "user") {
@@ -249,7 +250,7 @@ export default function Termi({ setIsTermiActive, isMobile, isDesktop, isTV, isM
           </SideBarOverlay>
         </SideBar>
         <ChatWrapper>
-          <h2>Frontend Developer</h2>
+          <h2>Web Developer</h2>
           <StyledChatBox>
             {messages.map((message, index) => {
               if (message.role === "user") {
