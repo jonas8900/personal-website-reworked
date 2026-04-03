@@ -131,7 +131,6 @@ export default function Home({ isMobile, isDesktop, isTV }) {
 
   return (
     <StyledContentWrapper $istermiactive={isTermiActive} ref={homeSectionRef}>
-    <h1>DIES IST EIN ZWEITER TEST</h1>
       {isTermiActive && (
         <StyledTermiWrapper>
           <Termi
